@@ -1,10 +1,19 @@
 import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # Suppress TensorFlow warnings
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  
 
 from flask import Flask, render_template, request, jsonify
-from functions import clean_text
 import tensorflow as tf
 import threading
+import nltk
+
+# Download NLTK data on startup
+try:
+    nltk.data.find('corpora/stopwords')
+except LookupError:
+    print("Downloading NLTK stopwords...")
+    nltk.download('stopwords', quiet=True)
+
+from functions import clean_text
 
 app = Flask(__name__)
 

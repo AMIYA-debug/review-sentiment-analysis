@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: imdb-sentiment
+    runtime: python
+    buildCommand: bash build.sh
+    startCommand: gunicorn app:app
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: true
