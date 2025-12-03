@@ -1,3 +1,6 @@
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # Suppress TensorFlow warnings
+
 from flask import Flask, render_template, request, jsonify
 from functions import clean_text
 import tensorflow as tf
